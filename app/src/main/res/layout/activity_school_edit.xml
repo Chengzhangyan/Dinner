@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="1dp"
+
+    android:background="@drawable/bkg_7"
+    >
+
+
+
+    <!--页面上方写用户名的文本框-->
+    <TextView
+        android:text="用户中心"
+        android:gravity="center"
+        android:layout_width="1080dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/bkg_16"
+        android:textColor="#ffffff"
+        android:textSize="23sp"
+        android:textStyle="normal"
+        android:id="@+id/textView2" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView2" >
+
+        <!--用户昵称-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:weightSum="1"
+            android:layout_marginTop="5dp">
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="请输入您的学校"
+                android:ems="10"
+                android:id="@+id/school_edit"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="返回"
+        android:id="@+id/school_edit_cansel_btn"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:background="#00d95b5b"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_column="2"
+        android:text="确定"
+        android:id="@+id/school_edit_sure_btn"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:background="#00d95b5b"
+
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>

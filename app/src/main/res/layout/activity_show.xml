@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="1dp"
+    tools:context="com.example.a1.dinnerlogin.login.login">
+
+
+    <!--页面上方写用户名的文本框-->
+    <TextView
+        android:text="发布饭约"
+        android:gravity="center"
+        android:layout_width="1080dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/bkg_16"
+        android:textColor="#ffffff"
+        android:textSize="23sp"
+        android:textStyle="normal"
+        android:id="@+id/textView2" />
+
+
+    <!--视图下方五个按钮 线性布局 -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="1080dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bkg_16"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <!--首页图片按钮-->
+        <ImageButton
+            android:layout_marginLeft="32dp"
+            android:id="@+id/imageButton2"
+            android:background="@drawable/btn_home"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_marginTop="9dp"
+
+            />
+        <!--图片按钮 消息-->
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:background="@drawable/btn_msg"
+            android:id="@+id/imageButton3"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="9dp"
+            />
+        <!--图片按钮 发布-->
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:background="@drawable/btn_write"
+            android:id="@+id/imageButton4"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="9dp"
+            />
+        <!--图片按钮 查找-->
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:background="@drawable/btn_search"
+            android:id="@+id/imageButton5"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="9dp"
+            />
+        <!--图片按钮 个人信息-->
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:background="@drawable/btn_me"
+            android:id="@+id/imageButton6"
+            android:layout_marginLeft="40dp"
+
+            android:layout_marginTop="9dp"
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
+

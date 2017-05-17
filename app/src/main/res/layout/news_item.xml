@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_marginTop="10dp"
+    android:layout_width="350dp"
+    android:background="@drawable/bkgforitem"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+
+        <TextView
+            android:text="申请"
+            android:id = "@+id/apply"
+            android:layout_width="70dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:paddingTop="10dip"
+            android:clickable="true"
+            />
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/head_05"
+            android:id="@+id/head_icon"/>
+        <TextView
+            android:text="申请人昵称"
+            android:id="@+id/nickname"
+            android:layout_marginLeft="10dp"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:textColor="#817a7a"
+            android:textSize="18sp"
+            android:paddingTop="10dip"
+            android:clickable="true"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:text="timemmm"
+            android:id="@+id/apply_time"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:textColor="#817a7a"
+            android:textSize="18sp"
+            android:paddingTop="10dip"
+            android:clickable="true"
+            />
+        <TextView
+            android:text="apply_content"
+            android:id="@+id/apply_content"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:textColor="#817a7a"
+            android:textSize="18sp"
+            android:paddingTop="10dip"
+            android:clickable="true"
+            />
+    </LinearLayout>
+</LinearLayout>

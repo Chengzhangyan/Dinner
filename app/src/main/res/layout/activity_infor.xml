@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#63000000"
+        android:weightSum="1">
+        <Button
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_back1"
+            android:id="@+id/back" />
+
+        <TextView
+            android:text="饭约信息"
+            android:gravity="center"
+            android:layout_width="81dp"
+            android:layout_height="50dp"
+
+            android:textSize="23sp"
+            android:textStyle="normal"
+            android:id="@+id/text"
+            android:layout_weight="1.04" />
+
+
+        <Button
+            android:text="加入"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+android:background="#00ffffff"
+            android:textSize="20sp"
+            android:id="@+id/join"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2">
+
+        <ListView
+            android:id="@+id/order_lv"
+            android:background="#c0f5f0f0"
+            android:layout_width="match_parent"
+            android:layout_height="427dp"
+            android:layout_marginBottom="5.0dip"
+            android:textColor="#000"
+            android:textSize="16.0dip">
+
+        </ListView>
+    </LinearLayout>
+
+    </LinearLayout>
+

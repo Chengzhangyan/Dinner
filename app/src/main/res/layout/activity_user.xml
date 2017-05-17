@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+
+<TextView
+android:text="用户中心"
+    android:background="@drawable/bkg_16"
+ android:gravity="center"
+android:layout_width="match_parent"
+android:layout_height="50dp"
+android:textColor="#ffffff"
+android:textSize="23sp"
+
+android:id="@+id/textView2"
+    android:layout_weight="0.93" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/underline"
+        android:weightSum="1"
+        android:layout_marginTop ="5dp"
+        >
+
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/user_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+     />
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="130dp"
+            android:layout_weight="0.19"
+            android:background="@drawable/underline"
+            android:text="修改头像" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <!--用户昵称-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:weightSum="1"
+            android:layout_marginTop="5dp"
+            >
+
+            <TextView
+                android:text="昵称"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:id="@+id/user_text_name"
+                android:layout_weight="0.23" />
+
+            <TextView
+
+                android:textSize="18sp"
+                android:layout_width="179dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_vertical|right"
+                android:id="@+id/user_edit_name" />
+
+            <Button
+                android:background="@drawable/btn_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/user_name_edit_btn"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical|right"/>
+        </LinearLayout>
+
+        <!--性别-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:weightSum="1"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="性别"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:id="@+id/user_text_gender"
+                android:layout_weight="0.23" />
+
+            <TextView
+
+                android:textSize="18sp"
+                android:layout_width="179dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_vertical|right"
+                android:id="@+id/user_edit_gender" />
+
+            <Button
+                android:background="@drawable/btn_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/user_gender_edit_btn"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+
+        <!--手机号-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:weightSum="1"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="手机"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:id="@+id/user_text_phone"
+                android:layout_weight="0.23" />
+
+            <TextView
+
+                android:textSize="18sp"
+                android:layout_width="179dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_vertical|right"
+                android:id="@+id/user_edit_phone" />
+
+            <Button
+                android:background="@drawable/btn_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/user_phone_edit_btn"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!--地区-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:weightSum="1"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="地区"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:id="@+id/user_text_address"
+                android:layout_weight="0.23" />
+
+            <TextView
+
+                android:textSize="18sp"
+                android:layout_width="179dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_vertical|right"
+                android:id="@+id/user_edit_address" />
+
+            <Button
+                android:background="@drawable/btn_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/user_address_edit_btn"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!--学校-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:weightSum="1"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:text="学校"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:id="@+id/user_text_school"
+                android:layout_weight="0.23" />
+
+            <TextView
+
+                android:textSize="18sp"
+                android:layout_width="179dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_vertical|right"
+                android:id="@+id/user_edit_school" />
+
+            <Button
+                android:background="@drawable/btn_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/user_school_edit_btn"
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <!--我的订单-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:weightSum="1"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:text="我的订单"
+                android:textColor="#7a0d0c0c"
+                android:background="@android:color/transparent"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center_vertical|left"
+                android:id="@+id/user_orders_btn" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/returnback"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+
+            android:layout_gravity="center"
+            android:background="#00d95b5b"
+            android:text="退出账号"
+            android:textColor="#4d2a2a"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

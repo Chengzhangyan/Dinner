@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="1dp">
+
+
+    <TextView
+        android:text="申请信息"
+        android:gravity="center"
+        android:layout_width="1080dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/bkg_77"
+        android:textSize="23sp"
+        android:textStyle="normal"
+        android:id="@+id/text"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/bkg"
+        android:layout_below="@+id/text">
+
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:id="@+id/text1"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:id="@+id/text2"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:id="@+id/text4"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:id="@+id/text5"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:id="@+id/text6"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:id="@+id/text7"
+            android:layout_weight="0.03" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/underline"
+            android:id="@+id/text8"
+            android:layout_weight="0.03" />
+    </LinearLayout>
+
+    <Button
+        android:text="返回"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:id="@+id/button5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="允许加入"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:id="@+id/button2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+
+        />
+
+</RelativeLayout>

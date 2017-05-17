@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bkg" >
+
+    <!--线性布局 登录框-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="left"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:weightSum="1">
+
+        <TextView
+            android:text="约饭吧"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/SignInLogo"
+            android:textSize="50sp"
+            android:layout_gravity="center"
+
+            />
+        <TextView
+            android:text="注册"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/registerText"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:text="手机号:"
+            android:textColor="#a6161616"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginBottom="1dp"
+            android:textSize="15sp"
+            android:id="@+id/userNameText" />
+
+        <EditText
+            android:inputType="number"
+            android:ems="10"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:id="@+id/resetpwd_edit_phone"
+            android:background="@drawable/msgcard"/>
+
+        <TextView
+            android:text="密码:"
+            android:textColor="#a6161616"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="1dp"
+            android:textSize="15sp"
+            android:id="@+id/pswText" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/msgcard"
+            android:textSize="15sp"
+            android:id="@+id/resetpwd_edit_pwd_old" />
+
+        <TextView
+            android:text="确认密码:"
+            android:textColor="#a6161616"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="1dp"
+            android:textSize="15sp"
+            android:id="@+id/pswText2" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/msgcard"
+            android:textSize="15sp"
+            android:id="@+id/resetpwd_edit_pwd_new" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="0.27">
+
+            <Button
+                android:text="取消"
+                android:textStyle="bold"
+                android:textColor="#a6161616"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/register_btn_cancel"
+                android:background="@drawable/msgcard"
+                />
+
+            <Button
+                android:text="确认"
+                android:layout_marginLeft="10dp"
+                android:textColor="#a6161616"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/register_btn_sure"
+                android:background="@drawable/msgcard"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+
