@@ -48,23 +48,252 @@ android:background="#00ffffff"
     </LinearLayout>
 
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2">
+        android:rowCount="14"
+        android:columnCount="3"
+        android:layout_marginLeft="15dp"
 
-        <ListView
-            android:id="@+id/order_lv"
-            android:background="#c0f5f0f0"
-            android:layout_width="match_parent"
-            android:layout_height="427dp"
-            android:layout_marginBottom="5.0dip"
+ >
+        <TextView
+            android:text="发起人"
+            android:id = "@+id/order_owner_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
             android:textColor="#000"
-            android:textSize="16.0dip">
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="nickname"
+            android:id = "@+id/order_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
 
-        </ListView>
-    </LinearLayout>
+            android:layout_row="1"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="饭约时间"
+            android:id = "@+id/eating_time_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="time"
+            android:id = "@+id/eating_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+
+            android:layout_row="2"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="餐厅"
+            android:id = "@+id/canteen_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="3"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="canteen"
+            android:id = "@+id/canteen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+
+            android:layout_row="3"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="人数下限"
+            android:id = "@+id/minnumber_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="4"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="minnumber"
+            android:id = "@+id/minnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+
+            android:layout_row="4"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="人数上限"
+            android:id = "@+id/maxnumber_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="5"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="maxnumber"
+            android:id = "@+id/maxnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+
+            android:layout_row="5"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="地区"
+            android:id = "@+id/city_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="6"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="city"
+            android:id = "@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+
+            android:layout_row="6"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="详细地址"
+            android:id = "@+id/address_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="7"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="address"
+            android:id = "@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_row="7"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="菜系"
+            android:id = "@+id/style_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="8"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="style"
+            android:id = "@+id/style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_row="8"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:text="发起人电话"
+            android:id = "@+id/telephone_text"
+            android:layout_width="120dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="9"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="tel"
+            android:id = "@+id/telephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_row="9"
+            android:layout_column="1"
+            />
+        <TextView
+            android:text="当前已加入用户"
+            android:id = "@+id/situation_text"
+            android:layout_width="140dip"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_row="10"
+            android:layout_column="0"
+            />
+        <TextView
+            android:text="style"
+            android:id = "@+id/situation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_row="10"
+            android:layout_column="1"
+            />
+
+
+    </GridLayout>
 
     </LinearLayout>
 

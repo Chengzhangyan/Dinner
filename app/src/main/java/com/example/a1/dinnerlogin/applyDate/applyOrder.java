@@ -1,6 +1,7 @@
 package com.example.a1.dinnerlogin.applyDate;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,6 +27,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.a1.dinnerlogin.releaseDate.orderInfo;
+import com.example.a1.dinnerlogin.menu;
+import com.example.a1.dinnerlogin.releaseDate.homePage;
 
 /**
  * Created by 1 on 2017/5/4.
@@ -33,15 +37,33 @@ import java.util.List;
 
 public class applyOrder extends Activity {
 
-    EditText InputText;
-    Button btnApply;
+    long CurTime = System.currentTimeMillis();
+    final String ApplyTimeValue = String.valueOf(CurTime);
+  private   EditText InputText;
+  private   Button btnApply;
+    private Button mBack;
     Handler handler=new Handler(){
         public void handleMessage(Message msg){
             Bundle b=msg.getData();
-            if(b.getString("flag").equals("true")){
-                Toast.makeText(applyOrder.this,"发送成功",Toast.LENGTH_LONG).show();
-            }else{
-                Toast.makeText(applyOrder.this,"发送失败",Toast.LENGTH_LONG).show();
+            if(b.getString("flag").equals("1")){
+                Toast.makeText(applyOrder.this,"发送申请成功",Toast.LENGTH_LONG).show();
+                System.out.println(" flag is "+b.getString("flag"));
+                Intent intent = new Intent(applyOrder.this,menu.class);
+                intent.putExtra("object",0);
+                startActivity(intent);
+                finish();
+            }else if(b.getString("flag").equals("0")){
+                Toast.makeText(applyOrder.this,"不能重复申请！",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(applyOrder.this,menu.class);
+                intent.putExtra("object",0);
+                startActivity(intent);
+                finish();
+            }else {
+                Toast.makeText(applyOrder.this,"操作失败！",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(applyOrder.this,menu.class);
+                intent.putExtra("object",0);
+                startActivity(intent);
+                finish();
             }
         }
     };
@@ -62,15 +84,24 @@ public class applyOrder extends Activity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
-
+        mBack = (Button)findViewById(R.id.back);
         InputText=(EditText)findViewById(R.id.inputText);
         btnApply=(Button)findViewById(R.id.buttonApply);
+
+        mBack.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(applyOrder.this, orderInfo.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnApply.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
                 String ipt=InputText.getText().toString();
-                AddDinnerThread myThread=new AddDinnerThread(ipt);
+                applyThread myThread=new applyThread(ipt);
                 new Thread(myThread).start();
             }
         });
@@ -85,22 +116,26 @@ public class applyOrder extends Activity {
 
     }
 
-    class AddDinnerThread implements Runnable {
+    class applyThread implements Runnable {
         private String ipt;
-        public AddDinnerThread(String ipt){
+
+        public applyThread(String ipt ){
             this.ipt=ipt;
+
         }
 
         public void run(){
 
-            String url=getString(R.string.server_ip) + "adddinner";
+            String url=getString(R.string.server_ip) + "AddOrderApply";
             HttpClient httpClient=new DefaultHttpClient();
             HttpPost httpPost=null;
             httpPost=new HttpPost(url);
 
             List<NameValuePair> formparams=new ArrayList<NameValuePair>();
-            formparams.add(new BasicNameValuePair("inputText",ipt));
-            formparams.add(new BasicNameValuePair("userid", login.u.getUserid()));
+            formparams.add(new BasicNameValuePair("content",ipt));//申请内容
+            formparams.add(new BasicNameValuePair("time",ApplyTimeValue));//申请内容
+            formparams.add(new BasicNameValuePair("userId", login.u.getUserid()));//申请人
+            formparams.add(new BasicNameValuePair("orderId", homePage.ord.getOrderid()));//饭约号
             UrlEncodedFormEntity uefEntity;
 
             try{
@@ -111,11 +146,13 @@ public class applyOrder extends Activity {
 
                 if(response.getStatusLine().getStatusCode()==200){
                     HttpEntity entity=response.getEntity();
+
                     if(entity!=null){
                         String json= EntityUtils.toString(entity,"UTF-8");
-                        JSONObject jsondata=new JSONObject(json);
+                        JSONObject jsondata4=new JSONObject(json);
                         Bundle b=new Bundle();
-                        b.putString("flag",jsondata.getString("flag"));
+                        System.out.println(" flag is "+jsondata4.getString("flag"));
+                        b.putString("flag",jsondata4.getString("flag"));
                         Message msg=new Message();
                         msg.setData(b);
                         applyOrder.this.handler.sendMessage(msg);

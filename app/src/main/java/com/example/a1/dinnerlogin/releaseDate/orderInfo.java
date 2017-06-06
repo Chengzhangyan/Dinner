@@ -41,22 +41,32 @@ import com.example.a1.dinnerlogin.menu;
 public class orderInfo extends Activity {
 
     //获得OrderId
- List<Map<String,Object>>datalist=new ArrayList<Map<String,Object>>();
+ //List<Map<String,Object>>datalist=new ArrayList<Map<String,Object>>();
 
-    public String OrderId;
-    List<String> getDatalist = new ArrayList<String>();
+   //public String OrderId;
+
     private Button mBack;
     private Button mJoin;
+    private TextView mNickName;
+    private TextView mEatingTime;
+    private TextView mCanteen;
+    private TextView mMinnumber;
+    private TextView mMaxnumber;
+    private TextView mCity;
+    private TextView mAddress;
+    private TextView mStyle;
+    private TextView mTel;
+    private TextView mSit;
 
-    Handler handler4=new Handler(){
+    Handler handler=new Handler(){
         public void handleMessage(Message msg){
-            Bundle b=msg.getData();
-for (int i=0;i<11;i++) {
-    Map<String, Object> map = new HashMap<String, Object>();/*把数据放入item*/
-    map.put(getDatalist.get(i),"info");
-    datalist.add(map);/*map内的数据放入一个数组list，第一个map存入的位置是datalist.get（0）*/
-}
-            OrderId = b.getString("orderId");
+            Bundle b5=msg.getData();
+
+            inputData(b5.getString("eatingTime"),b5.getString("restaurant"),b5.getString("minnumber"),
+                    b5.getString("maxnumber"), b5.getString("city"),b5.getString("address"),b5.getString("style"),b5.getString("telephone"),
+                    b5.getString("situation") );
+
+            //OrderId = b.getString("orderId");
         }
     };
 
@@ -68,7 +78,7 @@ for (int i=0;i<11;i++) {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
-                .detectNetwork()   // or .detectAll() for all detectable problems
+                .detectNetwork()   
                 .penaltyLog()
                 .build());
         StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
@@ -77,18 +87,28 @@ for (int i=0;i<11;i++) {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
+System.out.println("order id is "+homePage.ord.getOrderid());
 
-        infoThread myThread=new infoThread(homePage.ord.getOrderd());
+
+
+        infoThread myThread=new infoThread(homePage.ord.getOrderid());
+       // od.setOrderid(homePage.ord.getOrderid());
         new Thread(myThread).start();
 
         mBack=(Button) findViewById(R.id.back);
         mJoin=(Button) findViewById(R.id.join);
-
-        ListView lv=(ListView) findViewById(R.id.order_lv);
-        lv.setAdapter(new SimpleAdapter(this,datalist,R.layout.order_info_item,new String[]{"eatingTime"},new int[]{R.id.info_detail}));
-
+        mNickName = (TextView)findViewById(R.id.order_owner);
+        mEatingTime = (TextView)findViewById(R.id.eating_time);
+        mCanteen  = (TextView)findViewById(R.id.canteen);
+        mMinnumber = (TextView)findViewById(R.id.minnumber);
+        mMaxnumber = (TextView)findViewById(R.id.maxnumber);
+        mCity = (TextView)findViewById(R.id.city);
+        mAddress = (TextView)findViewById(R.id.address);
+        mStyle = (TextView)findViewById(R.id.style);
+        mTel = (TextView)findViewById(R.id.telephone);
+        mSit = (TextView)findViewById(R.id.situation);
+      //  inputData("John",homePage.ord.getOrderid(),"Canteen","minnumber","maxnumber","city","address","style","tel","situation");
         mBack.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View view) {
                 Intent intent=new Intent(orderInfo.this,menu.class);
                 intent.putExtra("object",0);
@@ -96,18 +116,30 @@ for (int i=0;i<11;i++) {
             }
         });
         mJoin.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View view) {
-                //
                 Intent addintent=new Intent(orderInfo.this,applyOrder.class);
                 startActivity(addintent);
             }
         });
 
+    }
+
+    private void inputData(String eatingTime,String restaurant,String minnumber,String maxnumber,String city,String address,String style,String telephone,String situation){
+       // mNickName.setText(nickname);String nickname,
+        mEatingTime.setText(eatingTime);
+        mCanteen.setText(restaurant);
+        mMinnumber.setText(minnumber);
+        mMaxnumber.setText(maxnumber);
+        mCity.setText(city);
+        mAddress.setText(address);
+        mStyle.setText(style);
+        mTel.setText(telephone);
+        mSit.setText(situation);
+    }
 
 
 
-    } class infoThread implements Runnable {
+    class infoThread implements Runnable {
         private String orderId;
 
         public infoThread(String orderId){
@@ -137,35 +169,23 @@ for (int i=0;i<11;i++) {
 
                         JSONObject jsondata4=new JSONObject(json);
                         Bundle b4=new Bundle();
+
                         b4.putString("orderId",jsondata4.getString("orderId"));
-//                        getDatalist.add(jsondata4.getString("nickname"));
-                        getDatalist.add(jsondata4.getString("eatingTime"));
-                        getDatalist.add(jsondata4.getString("restaurant"));
-                        getDatalist.add(jsondata4.getString("minnumber"));
-                        getDatalist.add(jsondata4.getString("maxnumber"));
-                        getDatalist.add(jsondata4.getString("city"));
-                        getDatalist.add(jsondata4.getString("address"));
-                        getDatalist.add(jsondata4.getString("style"));
-                        getDatalist.add(jsondata4.getString("telephone"));
-                        getDatalist.add(jsondata4.getString("situation"));
-                        getDatalist.add(jsondata4.getString("allNickname"));
-
-/*                        b4.putString("orderId",jsondata4.getString("orderId"));
-                        b4.putString("1",jsondata4.getString("nickname"));
-                        b4.putString("2",jsondata4.getString("eatingTime"));
-                        b4.putString("3",jsondata4.getString("restaurant"));
-                        b4.putString("4",jsondata4.getString("minnumber"));
-                        b4.putString("5",jsondata4.getString("maxnumber"));
-                        b4.putString("6",jsondata4.getString("city"));
-                        b4.putString("7",jsondata4.getString("address"));
-                        b4.putString("8",jsondata4.getString("style"));
-                        b4.putString("9",jsondata4.getString("telephone"));
-                        b4.putString("10",jsondata4.getString("situation"));*/
-
+                       // b4.putString("nickname",jsondata4.getString("nickname"));//new
+                        b4.putString("orderTime",jsondata4.getString("orderTime"));
+                        b4.putString("eatingTime",jsondata4.getString("eatingTime"));
+                        b4.putString("restaurant",jsondata4.getString("restaurant"));
+                        b4.putString("minnumber",jsondata4.getString("minnumber"));
+                        b4.putString("maxnumber",jsondata4.getString("maxnumber"));
+                        b4.putString("city",jsondata4.getString("city"));
+                        b4.putString("address",jsondata4.getString("address"));
+                        b4.putString("style",jsondata4.getString("style"));
+                        b4.putString("telephone",jsondata4.getString("telephone"));
+                        b4.putString("situation",jsondata4.getString("situation"));
 
                         Message msg4 = new Message();
                         msg4.setData(b4);
-                        orderInfo.this.handler4.sendMessage(msg4);
+                        orderInfo.this.handler.sendMessage(msg4);
                     }
                 }
             }catch(Exception e){

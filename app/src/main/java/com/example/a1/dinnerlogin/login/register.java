@@ -48,15 +48,17 @@ public class register extends AppCompatActivity{
     Handler handler = new Handler(){
         public void handleMessage(Message msg){
             Bundle b = msg.getData();/*获得msg中的数据*/
-            if (b.getString("flag").equals("true")){/*若flag为true则注册成功*/
+            if (b.getString("flag").equals("1")){/*若flag为true则注册成功*/
                 login.u.setUserid(b.getString("userid"));
           /*显示注册成功*/Toast.makeText(register.this, getText(R.string.register_success), Toast.LENGTH_SHORT).show();
           /*转到登陆界面*/Intent intent_register_to_login = new Intent(register.this, menu.class);
                 intent_register_to_login.putExtra("object",0);
                 startActivity(intent_register_to_login);
                 finish();
-            }else{
-                Toast.makeText(register.this, getText(R.string.register_fail), Toast.LENGTH_SHORT).show();
+            }else if(b.getString("flag").equals("1")){
+                Toast.makeText(register.this, "不能重复注册！", Toast.LENGTH_SHORT).show();
+            }else  {
+                Toast.makeText(register.this, "注册失败！", Toast.LENGTH_SHORT).show();
             }
             super.handleMessage(msg);
         }

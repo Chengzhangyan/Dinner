@@ -16,7 +16,7 @@
 <string name="server_ip">http://192.168.191.1:8080/Dinner/</string>
 
 <!--<string name="server_ip">http://10.0.2.2:8080/Dinner/</string>-->
-
+<!--    <string name="server_ip">http://192.168.42.58:8080/Dinner/</string>-->
     <string name="resetpwd_success">修改密码成功！</string>
     <string name="resetpwd_fail">修改密码失败！</string>
     <string name="pwd_not_fit_user">账号与密码不正确！</string>

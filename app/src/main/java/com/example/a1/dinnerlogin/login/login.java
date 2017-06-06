@@ -117,6 +117,7 @@ public class login extends Activity{
             mRemenberCheck.setChecked(true);
         }
 
+
         /*为按钮设置监听器*/
         mLoginButton.setOnClickListener(mListener);
         mClearButton.setOnClickListener(mListener);

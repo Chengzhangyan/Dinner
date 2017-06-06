@@ -76,7 +76,9 @@ public class userAddressEdit extends Activity {
             switch (v.getId()) {
                 case R.id.area_edit_sure_btn:
                     if(isAreaValid()){
-                        editArea();}
+                        editArea();
+                        startActivity(this_to_info);
+                        finish();}
                     break;
                 case R.id.area_edit_cansel_btn:
                     Toast.makeText(userAddressEdit.this,getString(R.string.back),Toast.LENGTH_SHORT).show();
@@ -142,10 +144,10 @@ public class userAddressEdit extends Activity {
                         Bundle b = new Bundle();/*用于类之间传递数据的对象*/
 
                         b.putString("flag",jsonData.getString("flag"));/*获取json数据包中flag的值并放入b中*/
-                        b.putString("area",jsonData.getString("area"));
+                   //     b.putString("area",jsonData.getString("area"));
 
                         System.out.println("flag is "+jsonData.getString("flag"));
-                        System.out.println("area is "+jsonData.getString("area"));
+                       // System.out.println("area is "+jsonData.getString("area"));
 
                         Message msg = new Message();
                         msg.setData(b);/*向消息中放入b对象，这样可以发送到别的类*/

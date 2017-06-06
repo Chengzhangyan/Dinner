@@ -90,7 +90,9 @@ public class userGenderEdit extends Activity{
                 switch (v.getId()) {
                     case R.id.gender_edit_sure_btn:
                         if (isGenderValid()){
-                            editGender();}else{
+                            editGender();
+                            startActivity(this_to_info);
+                            finish();}else{
                             Toast.makeText(userGenderEdit.this,"您未选择您的性别！",Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -169,9 +171,9 @@ public class userGenderEdit extends Activity{
                         Bundle b = new Bundle();/*用于类之间传递数据的对象*/
 
                         b.putString("flag", jsonData.getString("flag"));/*获取json数据包中flag的值并放入b中*/
-                        b.putString("gender", jsonData.getString("gender"));
+                       // b.putString("gender", jsonData.getString("gender"));
                         System.out.println("flag is " + jsonData.getString("flag"));
-                        System.out.println("gender is " + jsonData.getString("gender"));
+                     //   System.out.println("gender is " + jsonData.getString("gender"));
                         Message msg = new Message();
                         msg.setData(b);/*向消息中放入b对象，这样可以发送到别的类*/
                         userGenderEdit.this.handler.sendMessage(msg);

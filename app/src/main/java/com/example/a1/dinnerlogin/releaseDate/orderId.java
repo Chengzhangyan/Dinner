@@ -7,7 +7,7 @@ package com.example.a1.dinnerlogin.releaseDate;
 public class orderId {
     private String orderid;
 
-    public String getOrderd(){
+    public String getOrderid(){
         return orderid;
     }
     public void setOrderid(String orderid) {

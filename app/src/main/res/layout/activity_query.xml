@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+  >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#63000000"
+        android:weightSum="1">
+        <Button
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_back"
+            android:id="@+id/btn_back" />
+
+        <TextView
+            android:text="搜索饭约"
+            android:gravity="center"
+            android:layout_width="81dp"
+            android:layout_height="50dp"
+            android:textColor="#ffffff"
+            android:textSize="23sp"
+            android:textStyle="normal"
+            android:id="@+id/text"
+            android:layout_weight="1.04" />
+
+
+        <Button
+            android:text=""
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="#00ffffff"
+            android:textSize="20sp"
+            android:id="@+id/join"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/querytext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Spinner
+            android:text="菜系"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:id="@+id/food_spinner">
+
+        </Spinner>
+        <Button
+            android:text="查询"
+            android:id="@+id/querybtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>

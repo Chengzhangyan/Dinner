@@ -41,7 +41,7 @@ android:id="@+id/textView2"
      />
 
         <Button
-            android:id="@+id/search"
+            android:id="@+id/change_head"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_gravity="right"
@@ -139,44 +139,6 @@ android:id="@+id/textView2"
         </LinearLayout>
 
 
-        <!--手机号-->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/underline"
-            android:weightSum="1"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:text="手机"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:gravity="center"
-                android:id="@+id/user_text_phone"
-                android:layout_weight="0.23" />
-
-            <TextView
-
-                android:textSize="18sp"
-                android:layout_width="179dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|right"
-                android:layout_marginLeft="100dp"
-                android:layout_gravity="center_vertical|right"
-                android:id="@+id/user_edit_phone" />
-
-            <Button
-                android:background="@drawable/btn_edit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/user_phone_edit_btn"
-                android:gravity="center_vertical|right"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
 
         <!--地区-->
         <LinearLayout
@@ -256,27 +218,6 @@ android:id="@+id/textView2"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
-        <!--我的订单-->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/underline"
-            android:weightSum="1"
-            android:layout_marginTop="5dp">
-
-            <Button
-                android:text="我的订单"
-                android:textColor="#7a0d0c0c"
-                android:background="@android:color/transparent"
-                android:textSize="18sp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:gravity="center_vertical|left"
-                android:id="@+id/user_orders_btn" />
-
-        </LinearLayout>
 
         <Button
             android:id="@+id/returnback"

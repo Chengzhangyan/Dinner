@@ -14,17 +14,7 @@
 
 
 
-        <TextView
-            android:text="申请"
-            android:id = "@+id/apply"
-            android:layout_width="70dip"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:paddingTop="10dip"
-            android:clickable="true"
-            />
+
         <ImageView
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
@@ -63,6 +53,16 @@
         <TextView
             android:text="apply_content"
             android:id="@+id/apply_content"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:textColor="#817a7a"
+            android:textSize="18sp"
+            android:paddingTop="10dip"
+            android:clickable="true"
+            />
+        <TextView
+            android:text="result"
+            android:id="@+id/apply_result"
             android:layout_width="150dip"
             android:layout_height="wrap_content"
             android:textColor="#817a7a"

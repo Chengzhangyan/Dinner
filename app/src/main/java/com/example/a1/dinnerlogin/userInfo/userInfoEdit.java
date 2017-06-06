@@ -30,18 +30,23 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.a1.dinnerlogin.R;
 import com.example.a1.dinnerlogin.login.login;
+import android.graphics.Bitmap;
+import android.util.Base64;
+import java.io.ByteArrayOutputStream;
+import com.example.a1.dinnerlogin.photoChange;
 
 
 /**
@@ -55,7 +60,7 @@ public class userInfoEdit extends Activity{
 
     private static final String IMAGE_UNSPECIFIED = "image/*";
   //  private static final int PHOTO_RESOULT = 4;
-
+  photoChange photoChange = new photoChange();
   //  private Button album, camera;
     private ImageView mDisplay;
     private Button mSearch;
@@ -76,7 +81,8 @@ public class userInfoEdit extends Activity{
     private TextView mGender;
     private TextView mArea;
     private TextView mSchool;
-    private Button mOrder;
+
+
 
 
 
@@ -85,9 +91,10 @@ public class userInfoEdit extends Activity{
 
             Bundle b = msg.getData();/*获得msg中的数据*/
 
-            if (b.getString("flag").equals("true")){/*若flag为true则登陆成功*/
+          //  if (b.getString("flag").equals("true")){/*若flag为true则登陆成功*/
                 Toast.makeText(userInfoEdit.this,"获取用户信息成功！",Toast.LENGTH_SHORT).show();
-            }
+          //  mName.setText(b.getString("nickname").toString());
+            //}
             super.handleMessage(msg);
         }
     };
@@ -100,7 +107,7 @@ public class userInfoEdit extends Activity{
         setContentView(R.layout.activity_user);
 
         /*绑定布局文件中的部件*/
-        mSearch = (Button) findViewById(R.id.search) ;
+        mSearch = (Button) findViewById(R.id.change_head) ;
         mDisplay = (ImageView)findViewById(R.id.user_image);
         mName = (TextView)findViewById(R.id.user_edit_name);
         mGender = (TextView) findViewById(R.id.user_edit_gender);
@@ -112,7 +119,7 @@ public class userInfoEdit extends Activity{
         schoolBtn = (Button)findViewById(R.id.user_school_edit_btn);
         addressBtn = (Button)findViewById(R.id.user_address_edit_btn);
         exitBtn = (Button)findViewById(R.id.returnback);
-        mOrder=(Button)findViewById(R.id.user_orders_btn);
+
 
         getInfo();//发送userid到服务端获取用户信息并显示到ui上
 
@@ -124,8 +131,8 @@ public class userInfoEdit extends Activity{
         exitBtn.setOnClickListener(mListener);
 
         exitBtn.setOnClickListener(mListener);
-        mOrder.setOnClickListener(mListener);
 
+//修改头像监听器
         mSearch.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
@@ -164,10 +171,7 @@ public class userInfoEdit extends Activity{
                     startActivity(intent_user_to_school_edit);
                     finish();
                     break;
-                case R.id.user_orders_btn:    /*点击进入“我的订单”列表*/
-                    //startActivity(intent_user_to_orderlist);
-                    finish();
-                    break;
+
                 case R.id.returnback:
                     Intent intent_to_login = new Intent(userInfoEdit.this,login.class);
                     startActivity(intent_to_login);
@@ -184,45 +188,51 @@ public class userInfoEdit extends Activity{
         InfoThread myThread = new InfoThread(login.u.getUserid());
         new Thread(myThread).start();
     }
-    protected Dialog onCreateDialog(int id) {
+
+/*    protected Dialog onCreateDialog(int id) {
         Dialog dialog = null;
-        if(id==3) {
+        // String styleoffood = "";
+        switch (id) {
+            case DISPLAY_DIA:
+                final String TAG = "上传图片窗口";
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+                AlertDialog.Builder setTitle2 = builder2.setTitle("请选择上传方式");
+                builder2.setPositiveButton("相册", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i(TAG, "相册");
+                        Intent intent = new Intent(Intent.ACTION_PICK, null);
+                        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_UNSPECIFIED);
 
-            AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-            AlertDialog.Builder setTitle2 = builder2.setTitle("请选择上传方式");
-            builder2.setPositiveButton("相册", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    Log.i(TAG, "相册");
-                    Intent intent = new Intent(Intent.ACTION_PICK, null);
-                    intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_UNSPECIFIED);
-                    startActivityForResult(intent, CROP_REQUEST_CODE);
-                }
+                        startActivityForResult(intent, CROP_REQUEST_CODE);
+                    }
 
-            });
-            builder2.setNegativeButton("相机", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    Log.i(TAG, "相机");
-                    Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.
-                            getExternalStorageDirectory(), "temp.jpg")));
-                    startActivityForResult(intent2, CROP_REQUEST_CODE);
-                }
+                });
+                builder2.setNegativeButton("相机", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i(TAG, "相机");
+                        Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.
+                                getExternalStorageDirectory(), "temp.jpg")));
+                        startActivityForResult(intent2, CROP_REQUEST_CODE);
+                    }
 
-            });
-            dialog = builder2.create();
-
+                });
+                dialog = builder2.create();
+                break;
         }
-        return dialog;
-    }
 
+        return dialog;
+    }*/
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String TAG = "上传拖";
         Bitmap bitmap = null;
         ContentResolver resolver = getContentResolver();
         switch (requestCode) {
 
             case CROP_REQUEST_CODE:
-                Log.i(TAG, "相册裁剪成功");
+
                 Log.i(TAG, "裁剪以后 [ " + data + " ]");
                 if (data == null) {
                     // TODO 如果之前以后有设置过显示之前设置的图片 否则显示默认的图片
@@ -235,30 +245,29 @@ public class userInfoEdit extends Activity{
                 }catch (IOException e){
                     e.printStackTrace();
                 }
+                System.out.println("show success");
                 mDisplay.setImageBitmap(bitmap);
-/*                Bundle extras = data.getExtras();
-                if (extras != null) {
-                    //图片保存在photo里面
-                    Bitmap photo = extras.getParcelable("data");
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    photo.compress(Bitmap.CompressFormat.JPEG, 75, stream);// (0-100)压缩文件
-                    //此处可以把Bitmap保存到sd卡中，具体请看：http://www.cnblogs.com/linjiqin/archive/2011/12/28/2304940.html
-                    display.setImageBitmap(photo); //把图片显示在ImageView控件上*/
+                photoChange.setPhotoString(bitmap);
+                System.out.println("getPhotoString is "+photoChange.getPhotoString());
+               // headThread myThread = new headThread(login.u.getUserid(),photoChange.getPhotoString());
+               // new Thread(myThread).start();
 
-                break;
             default:
                 break;
         }
-    }
+    }*/
 
+  /*  public void getPhotoString(Bitmap bitmap){
+        photoChange bm = new photoChange();
+       String photoStr = bm.bitmapToBase64(bitmap);//通过base64编码转成string
 
+    }*/
 
-
-
-    private void updateUI(final String n,final String g,final String a,final String s){
+    private void updateUI( final String n,final String g,final String a,final String s){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+           //     mDisplay.setImageBitmap(head);
                 mName.setText(n);
                 mGender.setText(g);
                 mArea.setText(a);
@@ -285,7 +294,7 @@ public class userInfoEdit extends Activity{
 
             List<NameValuePair> formparams = new ArrayList<NameValuePair>();
             formparams.add(new BasicNameValuePair("user_id",userid));
-
+          //  formparams.add(new BasicNameValuePair("head",photoChange.getPhotoString()));
             UrlEncodedFormEntity uefEntity;
 
             try {
@@ -303,19 +312,16 @@ public class userInfoEdit extends Activity{
                         JSONObject jsonData = new JSONObject(json);/*解码json数据包*/
                         Bundle b = new Bundle();/*用于类之间传递数据的对象*/
 
-                        b.putString("flag",jsonData.getString("flag"));/*获取json数据包中flag的值并放入b中*/
+                     //   b.putString("flag",jsonData.getString("flag"));/*获取json数据包中flag的值并放入b中*/
                         b.putString("nickname",jsonData.getString("nickname"));
                         b.putString("gender",jsonData.getString("gender"));
                         b.putString("area",jsonData.getString("area"));
                         b.putString("school",jsonData.getString("school"));
+                       // b.putString("head",jsonData.getString("head"));
 
-                        System.out.println(jsonData.getString("nickname"));
-                        System.out.println(jsonData.getString("gender"));
-                        System.out.println(jsonData.getString("area"));
-                        System.out.println(jsonData.getString("school"));
-
+                       //  Bitmap head_icon = photoChange.base64ToBitmap(jsonData.getString("head"));
+                      //  updateUI(head_icon,jsonData.getString("nickname"),jsonData.getString("gender"),jsonData.getString("area"),jsonData.getString("school"));
                         updateUI(jsonData.getString("nickname"),jsonData.getString("gender"),jsonData.getString("area"),jsonData.getString("school"));
-
                         Message msg = new Message();
                         msg.setData(b);/*向消息中放入b对象，这样可以发送到别的类*/
                         userInfoEdit.this.handler.sendMessage(msg);/*发送消息到register类*/
@@ -329,5 +335,58 @@ public class userInfoEdit extends Activity{
 
 
     }
+
+/*    class headThread implements Runnable{
+        private String userid;
+        private String head;
+
+
+        public headThread(String userid,String head){
+            this.userid = userid;
+            this.head = head;
+        }
+        @Override
+        public void run(){
+            String url=getString(R.string.server_ip) +"ShowUserInfo";
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = null;
+            httpPost = new HttpPost(url);
+
+            List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+            formparams.add(new BasicNameValuePair("user_id",userid));
+            formparams.add(new BasicNameValuePair("head",photoChange.getPhotoString()));
+            UrlEncodedFormEntity uefEntity;
+
+            try {
+                //把数据封装到实体，发送到服务端
+                uefEntity=new UrlEncodedFormEntity(formparams,"UTF-8");
+                httpPost.setEntity(uefEntity);
+
+                //获得回应
+                HttpResponse response ;
+                response = httpClient.execute(httpPost);*//*response为服务端传来的数据*//*
+                if (response.getStatusLine().getStatusCode()==200){*//*返回码为200则连接成功*//*
+                    HttpEntity entity = response.getEntity();*//*获得服务端传来的实体*//*
+                    if (entity!=null){
+                        String json = EntityUtils.toString(entity,"UTF-8");
+                        JSONObject jsonData = new JSONObject(json);*//*解码json数据包*//*
+                        Bundle b = new Bundle();*//*用于类之间传递数据的对象*//*
+
+                        //   b.putString("flag",jsonData.getString("flag"));*//*获取json数据包中flag的值并放入b中*//*
+                        b.putString("flag",jsonData.getString("flag"));
+
+                        Message msg = new Message();
+                        msg.setData(b);*//*向消息中放入b对象，这样可以发送到别的类*//*
+                        userInfoEdit.this.handler.sendMessage(msg);*//*发送消息到register类*//*
+                    }
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+
+    }*/
 
 }

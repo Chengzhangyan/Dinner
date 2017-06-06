@@ -147,9 +147,9 @@ public class userSchoolEdit extends Activity {
                         Bundle b = new Bundle();/*用于类之间传递数据的对象*/
 
                         b.putString("flag", jsonData.getString("flag"));/*获取json数据包中flag的值并放入b中*/
-                        b.putString("school", jsonData.getString("school"));
+                     //   b.putString("school", jsonData.getString("school"));
                         System.out.println("flag is " + jsonData.getString("flag"));
-                        System.out.println("school is " + jsonData.getString("school"));
+                     //   System.out.println("school is " + jsonData.getString("school"));
                         Message msg = new Message();
                         msg.setData(b);/*向消息中放入b对象，这样可以发送到别的类*/
                         userSchoolEdit.this.handler.sendMessage(msg);
