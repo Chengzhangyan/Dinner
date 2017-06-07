@@ -1,4 +1,4 @@
-package com.example.a1.dinnerlogin.query;
+﻿package com.example.a1.dinnerlogin.query;
 
 /**
  * Created by 1 on 2017/6/2.
@@ -210,7 +210,7 @@ QueryThread myThread = new QueryThread(count);
             httpPost=new HttpPost(url);
 
             List<NameValuePair> formparams=new ArrayList<NameValuePair>();
-            formparams.add(new BasicNameValuePair("style",query.queryWord.getQueryWord()));
+            //formparams.add(new BasicNameValuePair("style",query.queryWord.getQueryWord()));
             formparams.add(new BasicNameValuePair("page",String.valueOf(page)));
             //formparams.add(new BasicNameValuePair("userid",login.u.getUserid()));
             UrlEncodedFormEntity uefEntity;

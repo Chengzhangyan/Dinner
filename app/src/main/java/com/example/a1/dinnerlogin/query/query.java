@@ -1,4 +1,4 @@
-package com.example.a1.dinnerlogin.query;
+﻿package com.example.a1.dinnerlogin.query;
 
 /**
  * Created by 1 on 2017/6/2.
@@ -47,9 +47,9 @@ public class query extends AppCompatActivity {
     private Button mBack;
     Button queryBtn;
     private  ArrayAdapter<String> adpt2;
-    public static queryWord queryWord;
+    public static FoodWord queryWord;
 ArrayList<String> list = new ArrayList<>();
-
+private static final String[] m= {"鲁菜","川菜","粤菜"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,22 +62,44 @@ mfood = (Spinner)findViewById(R.id.food_spinner);
 
 mBack = (Button)findViewById(R.id.btn_back);
         mfood.setSelection(0);
-
-        list.add("鲁菜");
+       // list.add("鲁菜");
+     /*   list.add("鲁菜");
         list.add("川菜");
         list.add("粤菜");
         list.add("苏菜");
         list.add("闽菜");
         list.add("浙菜");
         list.add("湘菜");
-        list.add("徽菜");
-       adpt2 = new ArrayAdapter<String>(this,R.layout.msg_menu_item,list);
+        list.add("徽菜");*/
+       adpt2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,m);
         adpt2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mfood.setAdapter(adpt2);
-        mfood.setSelection(0,true);
+     //   mfood.setSelection(0,true);
 
-        mfood.setOnItemSelectedListener(new SpinnerXMLSelectedListener());
+    mfood.setOnItemSelectedListener(new SpinnerSelectedListener());
+
+        mfood.setVisibility(View.VISIBLE);
+            /*new OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,int position,long arg3 ){
+                String posi=list.get(position);
+                queryText.setText(posi);
+                System.out.println(posi);
+                queryWord.setQueryWord(adpt2.getItem(position));
+                System.out.println("queryword:"+queryWord.getQueryWord());
+                //mfood.setSelection(position,true);
+
+
+            }
+            public void onNothingSelected(AdapterView<?> arg0){
+
+            }
+
+
+
+
+        }*/
         //璁剧疆鎸夐挳鐨勫搷搴斾簨浠讹紝鍗崇偣鍑绘寜閽紑濮嬫墽琛屽瓙绾跨▼
 
         queryBtn.setOnClickListener(new Button.OnClickListener(){
@@ -111,70 +133,20 @@ mBack = (Button)findViewById(R.id.btn_back);
 
     }
 
-class SpinnerXMLSelectedListener implements OnItemSelectedListener{
- public void onItemSelected(AdapterView<?> arg0, View arg1,int position,long arg3 ){
-     queryText.setText(adpt2.getItem(position).toString());
-     mfood.setSelection(position,true);
-     queryWord.setQueryWord(adpt2.getItem(position).toString());
+    class SpinnerSelectedListener implements OnItemSelectedListener{
+        public void onItemSelected(AdapterView<?> arg0, View arg1,int arg2,long arg3){
+            queryText.setText("your choose is "+ m[arg2]);
+        //    queryWord.setQueryWord(m[arg2]);
+        }
+        public void onNothingSelected(AdapterView<?> arg0){
 
- }
- public void onNothingSelected(AdapterView<?> arg0){
-
- }
-
-
-
-}
-
-
-/*
-
-
-    class QueryThread implements Runnable {
-        private String queryipt;
-        public QueryThread(String queryipt){
-            this.queryipt=queryipt;
         }
 
-        public void run(){
-
-            //鏈嶅姟鍣ㄧ殑璺緞锛屾牴鎹疄闄呮儏鍐垫洿鏀?
-
-            String url="http://10.0.2.2:8080/dinner1/adddinner";
-            HttpClient httpClient=new DefaultHttpClient();
-            HttpPost httpPost=null;
-            httpPost=new HttpPost(url);
-
-            List<NameValuePair> formparams=new ArrayList<NameValuePair>();
-            formparams.add(new BasicNameValuePair("queryipt",queryipt));
-            //formparams.add(new BasicNameValuePair("userid",login.u.getUserid()));
-            UrlEncodedFormEntity uefEntity;
-
-            try{
-                uefEntity=new UrlEncodedFormEntity(formparams,"UTF-8");
-                httpPost.setEntity(uefEntity);
-                HttpResponse response;
-                response=httpClient.execute(httpPost);
-
-                if(response.getStatusLine().getStatusCode()==200){
-                    HttpEntity entity=response.getEntity();
-                    if(entity!=null){
-                        String json= EntityUtils.toString(entity,"UTF-8");
-                        JSONObject jsondata=new JSONObject(json);
-                        Bundle b=new Bundle();
-                        b.putString("flag",jsondata.getString("flag"));
-                        Message msg=new Message();
-                        msg.setData(b);
-                        query.this.handler.sendMessage(msg);
-                    }
-                }
+    }
 
 
-            } catch(Exception e){
-                e.printStackTrace();
-            }
 
-        }
-    }*/
+
+
 }
 
