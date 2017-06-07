@@ -96,6 +96,7 @@ public class releaseDate extends Activity {
             Intent intent = new Intent(releaseDate.this, menu.class);
             intent.putExtra("object",0);
             startActivity(intent);
+            finish();
         }
     };
 

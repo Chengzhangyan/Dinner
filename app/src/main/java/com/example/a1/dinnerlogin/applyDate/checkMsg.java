@@ -69,10 +69,9 @@ public class checkMsg extends Activity {
     private int[] imgIds = new int[]{R.mipmap.head_05, R.mipmap.head_06,
             R.mipmap.head_07,R.mipmap.head_05,R.mipmap.head_07,R.mipmap.head_05,R.mipmap.head_05,R.mipmap.head_05,R.mipmap.head_05};
     List<Map<String,Object>> datalist=new ArrayList<Map<String,Object>>();
-    //List<Map<String,Bitmap>> headlist=new ArrayList<Map<String,Bitmap>>();
 
-    private final static int STYLEOFFOOD_DIA = 2;
     List<String> list = new ArrayList<>();/*list存储获得的orderid*/
+
 //private int j;
 
 
@@ -88,18 +87,24 @@ public class checkMsg extends Activity {
                 Map<String, Object> map = new HashMap<String, Object>();/*把数据放入item*/
                 //   Map<String, Bitmap> headmap = new HashMap<String, Bitmap>();/*把数据放入item*/
                 // map.put("nickname", b.getString("nickname"+i));/*把获得的信息放入map*/
-                map.put("orderId", b.getString("orderId"+i));
+                map.put("nickname", b.getString("nickname"+i));
                 map.put("apply_time", b.getString("time"+i));
                 map.put("apply_content", b.getString("content"+i));
                 map.put("userId", b.getString("userId"+i));
+                if(b.getString("read"+i).equals("1")){
+                    map.put("read","已同意");
+                }else if(b.getString("read"+i).equals("-1")){
+                    map.put("read","已拒绝");
+                }else{
+                    map.put("read","待审批");
+                }
 
-                //  map.put("applyResult", b.getString("applyResult"+i));
                 map.put("head_icon", imgIds[count]);
                 System.out.println(map+" message count  is "+count);
-                //  headmap.put("head_icon",bmp.base64ToBitmap(b.getString("photo"+i)));
-//headlist.add(headmap);
+
                 datalist.add(map);/*map内的数据放入一个数组list，第一个map存入的位置是datalist.get（0）*/
                 list.add(b.getString("userId"+i));
+
 
             }
             System.out.println(" message datalist is "+datalist);
@@ -140,8 +145,8 @@ public class checkMsg extends Activity {
         //  testhome(bmp.bitmapToBase64(b));
 //testhome();
         // final SimpleAdapter head_adpt = new SimpleAdapter(this,headlist,R.layout.news_item,new String[]{"head_icon" },new int[]{R.id.head_icon });
-        adpt =new SimpleAdapter(this,datalist,R.layout.news_item,new String[]{ "head_icon","orderId","apply_time",
-                "apply_content"},new int[]{ R.id.head_icon,R.id.nickname,R.id.apply_time,R.id.apply_content});
+        adpt =new SimpleAdapter(this,datalist,R.layout.news_item,new String[]{ "head_icon","nickname","apply_time",
+                "apply_content","read"},new int[]{ R.id.head_icon,R.id.nickname,R.id.apply_time,R.id.apply_content,R.id.apply_result});
         lv.setAdapter(adpt);
         // lv.setAdapter(head_adpt);
 
@@ -152,7 +157,7 @@ public class checkMsg extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(checkMsg.this,checkApply.class);
                 applyer.setUserid(list.get(position));
-                msgMenu.ord.setOrderid(datalist.get(position).get("orderId").toString());//获得订单id
+            //    msgMenu.ord.setOrderid();//获得订单id
                 startActivity(intent);
                 finish();
 
@@ -227,12 +232,12 @@ public class checkMsg extends Activity {
                             for (int i=1;i<=listnum;i++) {
 
                                 b.putString("orderId"+i, jsondata4.getString("orderId"+i));
-                                //    b4.putString("nickname"+i, jsondata4.getString("nickname"+i));//申请人的名字
+                                     b.putString("nickname"+i, jsondata4.getString("nickname"+i));//申请人的名字
                                 b.putString("userId"+i, jsondata4.getString("userId"+i));//申请人id
-                                //b4.putString("orderTime",jsondata4.getString("orderTime"));
-                                //  b4.putString("result"+i, jsondata4.getString("result"+i));
+
+                                 b.putString("read"+i, jsondata4.getString("read"+i));
                                 b.putString("time"+i, jsondata4.getString("time"+i));
-                                //  b4.putString("photo"+i, jsondata4.getString("photo"+i));
+
                                 b.putString("content"+i, jsondata4.getString("content"+i));
                                 System.out.println("content"+jsondata4.getString("content"+i));
                             }

@@ -1,4 +1,4 @@
-﻿package com.example.a1.dinnerlogin.query;
+package com.example.a1.dinnerlogin.query;
 
 /**
  * Created by 1 on 2017/6/2.
@@ -42,65 +42,36 @@ import java.util.List;
 
 public class query extends AppCompatActivity {
     Spinner mfood;
-    //Spinner mCity;
+
     TextView queryText;
     private Button mBack;
     Button queryBtn;
     private  ArrayAdapter<String> adpt2;
-    public static FoodWord queryWord;
-ArrayList<String> list = new ArrayList<>();
-private static final String[] m= {"鲁菜","川菜","粤菜"};
 
+    private static final String[] m= {"鲁菜","川菜","粤菜","苏菜","闽菜","浙菜","湘菜","徽菜"};
+    public static queryWord queryWord = new queryWord();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query);
 
-mfood = (Spinner)findViewById(R.id.food_spinner);
+        mfood = (Spinner)findViewById(R.id.food_spinner);
         queryText=(TextView) findViewById(R.id.querytext);
         queryBtn=(Button) findViewById(R.id.querybtn);
 
-mBack = (Button)findViewById(R.id.btn_back);
+        mBack = (Button)findViewById(R.id.btn_back);
         mfood.setSelection(0);
-       // list.add("鲁菜");
-     /*   list.add("鲁菜");
-        list.add("川菜");
-        list.add("粤菜");
-        list.add("苏菜");
-        list.add("闽菜");
-        list.add("浙菜");
-        list.add("湘菜");
-        list.add("徽菜");*/
-       adpt2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,m);
+
+        adpt2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,m);
         adpt2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mfood.setAdapter(adpt2);
-     //   mfood.setSelection(0,true);
+        //   mfood.setSelection(0,true);
 
-    mfood.setOnItemSelectedListener(new SpinnerSelectedListener());
+        mfood.setOnItemSelectedListener(new SpinnerSelectedListener());
 
         mfood.setVisibility(View.VISIBLE);
-            /*new OnItemSelectedListener(){
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,int position,long arg3 ){
-                String posi=list.get(position);
-                queryText.setText(posi);
-                System.out.println(posi);
-                queryWord.setQueryWord(adpt2.getItem(position));
-                System.out.println("queryword:"+queryWord.getQueryWord());
-                //mfood.setSelection(position,true);
 
-
-            }
-            public void onNothingSelected(AdapterView<?> arg0){
-
-            }
-
-
-
-
-        }*/
-        //璁剧疆鎸夐挳鐨勫搷搴斾簨浠讹紝鍗崇偣鍑绘寜閽紑濮嬫墽琛屽瓙绾跨▼
 
         queryBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -120,10 +91,11 @@ mBack = (Button)findViewById(R.id.btn_back);
 /*                    QueryThread myThread = new QueryThread(queryipt);
                     new Thread(myThread).start();*/
 
-                Intent intent=new Intent();
-                    intent.putExtra("queryipt", queryipt);
-                intent.setClass(query.this, queryresultActivity.class);
-                startActivity(intent);
+                    Intent intent=new Intent();
+
+                    intent.setClass(query.this, queryresultActivity.class);
+                    startActivity(intent);
+                    finish();
                 }else {
                     Toast.makeText(query.this,"搜查项不能为空哦！",Toast.LENGTH_LONG).show();
                 }
@@ -136,7 +108,7 @@ mBack = (Button)findViewById(R.id.btn_back);
     class SpinnerSelectedListener implements OnItemSelectedListener{
         public void onItemSelected(AdapterView<?> arg0, View arg1,int arg2,long arg3){
             queryText.setText("your choose is "+ m[arg2]);
-        //    queryWord.setQueryWord(m[arg2]);
+            queryWord.setQueryWord(m[arg2]);
         }
         public void onNothingSelected(AdapterView<?> arg0){
 

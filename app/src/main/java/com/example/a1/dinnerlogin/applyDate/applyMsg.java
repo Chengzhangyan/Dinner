@@ -88,11 +88,18 @@ public class applyMsg extends Activity {
              //   if(!datalist.get(i-2).get("userId").toString().equals( b.getString("userId"+i))) {
                     Map<String, Object> map = new HashMap<String, Object>();/*把数据放入item*/
                     //   Map<String, Bitmap> headmap = new HashMap<String, Bitmap>();/*把数据放入item*/
-                    // map.put("nickname", b.getString("nickname"+i));/*把获得的信息放入map*/
-                    map.put("orderId", b.getString("orderId" + i));
-                    map.put("apply_time", b.getString("time" + i));
-                    map.put("apply_content", b.getString("content" + i));
-                    map.put("userId", b.getString("userId" + i));
+                   //  map.put("nickname", b.getString("nickname"+i));/*把获得的信息放入map*/
+                map.put("orderId", b.getString("orderId"+i));
+                map.put("apply_time", b.getString("time"+i));
+                map.put("apply_content", b.getString("content"+i));
+                map.put("userId", b.getString("userId"+i));
+                if(b.getString("read"+i).equals("1")){
+                    map.put("read","已同意");
+                }else if(b.getString("read"+i).equals("-1")){
+                    map.put("read","已拒绝");
+                }else{
+                    map.put("read","待审批");
+                }
 
                     //  map.put("applyResult", b.getString("applyResult"+i));
                     map.put("head_icon", imgIds[count]);
@@ -116,7 +123,7 @@ public class applyMsg extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_msg);
+        setContentView(R.layout.activity_msg2);
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
@@ -141,8 +148,8 @@ public class applyMsg extends Activity {
         //  testhome(bmp.bitmapToBase64(b));
 //testhome();
         // final SimpleAdapter head_adpt = new SimpleAdapter(this,headlist,R.layout.news_item,new String[]{"head_icon" },new int[]{R.id.head_icon });
-        adpt =new SimpleAdapter(this,datalist,R.layout.news_item,new String[]{ "head_icon","orderId","apply_time",
-                "apply_content"},new int[]{ R.id.head_icon,R.id.nickname,R.id.apply_time,R.id.apply_content});
+        adpt =new SimpleAdapter(this,datalist,R.layout.news_item2,new String[]{  "head_icon","apply_time",
+                "apply_content","read"},new int[]{ R.id.head_icon,R.id.apply_time,R.id.apply_content,R.id.apply_result});
         lv.setAdapter(adpt);
         // lv.setAdapter(head_adpt);
 
@@ -228,12 +235,11 @@ public class applyMsg extends Activity {
                         b.putString("listNum", jsondata4.getString("listNum"));
                         if (listnum!=0){
                             for (int i=1;i<=listnum;i++) {
-
                                 b.putString("orderId"+i, jsondata4.getString("orderId"+i));
-                                //    b4.putString("nickname"+i, jsondata4.getString("nickname"+i));//申请人的名字
+                                //    b.putString("nickname"+i, jsondata4.getString("nickname"+i));//申请人的名字
                                 b.putString("userId"+i, jsondata4.getString("userId"+i));//申请人id
                                 //b4.putString("orderTime",jsondata4.getString("orderTime"));
-                                //  b4.putString("result"+i, jsondata4.getString("result"+i));
+                                b.putString("read"+i, jsondata4.getString("read"+i));
                                 b.putString("time"+i, jsondata4.getString("time"+i));
                                 //  b4.putString("photo"+i, jsondata4.getString("photo"+i));
                                 b.putString("content"+i, jsondata4.getString("content"+i));

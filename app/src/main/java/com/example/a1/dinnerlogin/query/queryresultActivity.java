@@ -1,4 +1,4 @@
-﻿package com.example.a1.dinnerlogin.query;
+package com.example.a1.dinnerlogin.query;
 
 /**
  * Created by 1 on 2017/6/2.
@@ -78,7 +78,7 @@ public class queryresultActivity extends Activity {
     private Button mBack;
     private TextView mResult;
 
-private int count = 1;
+    private int count = 1;
     private SimpleAdapter adpt;
     private boolean is_divPage;//是否进行分页
     private final static int REQUEST_CODE=1;
@@ -181,7 +181,7 @@ private int count = 1;
         });
 
         mResult.setText(query.queryWord.getQueryWord());
-QueryThread myThread = new QueryThread(count);
+        QueryThread myThread = new QueryThread(count);
         new Thread(myThread).start();
 
     }
@@ -210,7 +210,7 @@ QueryThread myThread = new QueryThread(count);
             httpPost=new HttpPost(url);
 
             List<NameValuePair> formparams=new ArrayList<NameValuePair>();
-            //formparams.add(new BasicNameValuePair("style",query.queryWord.getQueryWord()));
+            formparams.add(new BasicNameValuePair("style",query.queryWord.getQueryWord()));
             formparams.add(new BasicNameValuePair("page",String.valueOf(page)));
             //formparams.add(new BasicNameValuePair("userid",login.u.getUserid()));
             UrlEncodedFormEntity uefEntity;
@@ -268,7 +268,7 @@ QueryThread myThread = new QueryThread(count);
 
 
             //瀵瑰簲鐨勬湇鍔″櫒鍦板潃锛屼笉鍚屾満鍣ㄤ箣闂磋杩涜鐩稿簲鐨勬洿鏀?
-                  String url="http://10.0.2.2:8080/dinner1/adddinner";
+            String url="http://10.0.2.2:8080/dinner1/adddinner";
             HttpClient httpClient=new DefaultHttpClient();
             HttpPost httpPost=null;
             httpPost=new HttpPost(url);
@@ -317,9 +317,9 @@ QueryThread myThread = new QueryThread(count);
                             b.putString("orderId"+i, jsondata.getString("orderId"+i));
                             b.putString("nickname"+i, jsondata.getString("nickname"+i));
                             b.putString("orderContent"+i, jsondata.getString("orderContent"+i));
-                           // b4.putString("restaurant"+i, jsondata4.getString("restaurant"+i));
+                            // b4.putString("restaurant"+i, jsondata4.getString("restaurant"+i));
                             //     b4.putString("photo"+i, jsondata4.getString("photo"+i));
-                           // b4.putString("currnumber"+i, jsondata4.getString("number"+i));
+                            // b4.putString("currnumber"+i, jsondata4.getString("number"+i));
 //System.out.println();
                         }
 

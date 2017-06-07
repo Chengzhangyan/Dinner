@@ -29,6 +29,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,11 +46,11 @@ import com.example.a1.dinnerlogin.releaseDate.orderId;
 public class checkApply extends Activity {
 
     private TextView mEatingTime;
-    private TextView mCanteen;
+
     private TextView mContent;
     private TextView mResult;
-    private ImageView mHead;
-    private Button mApplyer;
+
+    private TextView mApplyer;
     private Button mOrder;
     private Button mRefuse;
     private Button mSure;
@@ -81,7 +82,7 @@ public class checkApply extends Activity {
         public void handleMessage(Message msg) {
             Bundle b = msg.getData();
 
-            inputData(b.getString("userId"), b.getString("eatingTime"), b.getString("canteen"), b.getString("content"), b.getString("flag"));
+            inputData(b.getString("nickname"), b.getString("time"), b.getString("content"), b.getString("read"));
 
         }
 
@@ -110,10 +111,10 @@ public class checkApply extends Activity {
 
 
             mResult = (TextView) findViewById(R.id.status);
-            mApplyer = (Button) findViewById(R.id.applyer);
-            mHead = (ImageView) findViewById(R.id.applyer_head);
+            mApplyer = (TextView) findViewById(R.id.applyer);
+
             mEatingTime = (TextView) findViewById(R.id.time);
-            mCanteen = (TextView) findViewById(R.id.canteen);
+
             mContent = (TextView) findViewById(R.id.content);
             mOrder = (Button) findViewById(R.id.orderinfo);
             mSure = (Button) findViewById(R.id.sure_btn);
@@ -169,17 +170,14 @@ public class checkApply extends Activity {
 
 
 
-        private void inputData(String nickname, String eatingTime, String canteen, String content, String result) {
+        private void inputData(String nickname, String eatingTime,  String content, String result) {
             // mNickName.setText(nickName);String nickName,
             mEatingTime.setText(eatingTime);
-            mCanteen.setText(canteen);
+
             mApplyer.setText(nickname);
             mResult.setText(result);
             mContent.setText(content);
-            if(mResult.equals("1")||mResult.equals("-1")){
-                mSure.setVisibility(View.GONE);
-                mRefuse.setVisibility(View.GONE);
-            }
+
 
 
         }
@@ -201,8 +199,8 @@ public class checkApply extends Activity {
 
                 List<NameValuePair> formparams = new ArrayList<NameValuePair>();
                 formparams.add(new BasicNameValuePair("read", read));//审批结果 1同意 -1拒绝 false操作失败
-                formparams.add(new BasicNameValuePair("userId", login.u.getUserid()));//我
-                formparams.add(new BasicNameValuePair("orderId", msgMenu.ord.getOrderid()));//饭约号
+                formparams.add(new BasicNameValuePair("userId", checkMsg.applyer.getUserid()));//我
+                formparams.add(new BasicNameValuePair("orderId", "0755ba2b-a391-4663-95be-7f4aaa20b5b5"));//饭约号
                 UrlEncodedFormEntity uefEntity;
 
                 try {
@@ -270,13 +268,13 @@ public class checkApply extends Activity {
                             Bundle b = new Bundle();
                             // System.out.println(" flag is "+jsondata4.getString("flag"));
                             //b.putString("flag",jsondata4.getString("flag"));
-                            b.putString("userId", jsondata4.getString("userId"));
-                            b.putString("time", jsondata4.getString("eatingTime"));
-                            b.putString("content", jsondata4.getString("content"));
-                            b.putString("canteen", jsondata4.getString("canteen"));
-                            b.putString("flag", jsondata4.getString("flag"));
-                            //  b.putString("head",jsondata4.getString("head"));
 
+                            b.putString("time", jsondata4.getString("time"));
+                            b.putString("content", jsondata4.getString("content"));
+                          //  b.putString("canteen", jsondata4.getString("canteen"));
+                          //  b.putString("flag", jsondata4.getString("flag"));
+                             b.putString("nickname",jsondata4.getString("nickname"));
+                            b.putString("read",jsondata4.getString("read"));
                             Message msg1 = new Message();
                             msg1.setData(b);
                             checkApply.this.handler1.sendMessage(msg1);

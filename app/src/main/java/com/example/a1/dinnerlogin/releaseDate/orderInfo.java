@@ -61,10 +61,17 @@ public class orderInfo extends Activity {
     Handler handler=new Handler(){
         public void handleMessage(Message msg){
             Bundle b5=msg.getData();
-
-            inputData(b5.getString("eatingTime"),b5.getString("restaurant"),b5.getString("minnumber"),
+            int nameNum = Integer.valueOf(b5.getString("nameNum"));
+            String name = null;
+            for (int i=1;i<=nameNum;i++){
+                if(i==1){
+                    name=b5.getString("name"+ i );
+                }else{
+                name = name+","+ b5.getString("name"+ i );
+            }}
+            inputData(b5.getString("nickname"),b5.getString("eatingTime"),b5.getString("restaurant"),b5.getString("minnumber"),
                     b5.getString("maxnumber"), b5.getString("city"),b5.getString("address"),b5.getString("style"),b5.getString("telephone"),
-                    b5.getString("situation") );
+                    name );
 
             //OrderId = b.getString("orderId");
         }
@@ -124,8 +131,9 @@ System.out.println("order id is "+homePage.ord.getOrderid());
 
     }
 
-    private void inputData(String eatingTime,String restaurant,String minnumber,String maxnumber,String city,String address,String style,String telephone,String situation){
+    private void inputData(String nickname,String eatingTime,String restaurant,String minnumber,String maxnumber,String city,String address,String style,String telephone,String situation){
        // mNickName.setText(nickname);String nickname,
+        mNickName.setText(nickname);
         mEatingTime.setText(eatingTime);
         mCanteen.setText(restaurant);
         mMinnumber.setText(minnumber);
@@ -169,9 +177,13 @@ System.out.println("order id is "+homePage.ord.getOrderid());
 
                         JSONObject jsondata4=new JSONObject(json);
                         Bundle b4=new Bundle();
+                        int nameNum = Integer.valueOf(jsondata4.getString("nameNum"));
 
+                        for (int i=1;i<=nameNum;i++) {
+                            b4.putString("name"+i, jsondata4.getString("name"+i));
+                        }
                         b4.putString("orderId",jsondata4.getString("orderId"));
-                       // b4.putString("nickname",jsondata4.getString("nickname"));//new
+                       b4.putString("nickname",jsondata4.getString("nickname"));//new
                         b4.putString("orderTime",jsondata4.getString("orderTime"));
                         b4.putString("eatingTime",jsondata4.getString("eatingTime"));
                         b4.putString("restaurant",jsondata4.getString("restaurant"));
@@ -181,7 +193,8 @@ System.out.println("order id is "+homePage.ord.getOrderid());
                         b4.putString("address",jsondata4.getString("address"));
                         b4.putString("style",jsondata4.getString("style"));
                         b4.putString("telephone",jsondata4.getString("telephone"));
-                        b4.putString("situation",jsondata4.getString("situation"));
+
+                        b4.putString("nameNum",jsondata4.getString("nameNum"));
 
                         Message msg4 = new Message();
                         msg4.setData(b4);

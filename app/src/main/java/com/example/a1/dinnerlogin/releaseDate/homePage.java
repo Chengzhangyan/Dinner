@@ -81,7 +81,7 @@ for (int i=1;i<=listnum;i++){
   //  bitmap bm = new bitmap();
             Map<String,Object> map = new HashMap<String,Object>();/*把数据放入item*/
             map.put("orderId",b.getString("orderId"+i));/*把获得的信息放入map*/
-           // map.put("nickname",b.getString("nickname"+i));
+            map.put("nickname",b.getString("nickname"+i));
             map.put("eating_time",b.getString("eatingTime"+i));
             map.put("curr_number",b.getString("currnumber"+i));
             map.put("restaurant",b.getString("restaurant"+i));
@@ -140,8 +140,8 @@ for (int i=1;i<=listnum;i++){
 
 //testhome();
 
-           adpt =  new SimpleAdapter(this,datalist,R.layout.item_item,new String[]{"head_icon","eating_time",
-                "curr_number","restaurant",},new int[]{R.id.head_icon,R.id.eating_time,R.id.curr_number,R.id.restaurant,
+           adpt =  new SimpleAdapter(this,datalist,R.layout.item_item,new String[]{"head_icon","nickname","eating_time",
+                "curr_number","restaurant",},new int[]{R.id.head_icon,R.id.order_owner,R.id.eating_time,R.id.curr_number,R.id.restaurant,
         });
 
         lv.setAdapter(adpt);
@@ -242,9 +242,8 @@ public void testhome(){
                         int listnum = Integer.valueOf(jsondata4.getString("listNum"));
                         b4.putString("listNum", jsondata4.getString("listNum"));
                         for (int i=1;i<=listnum;i++) {
-
                             b4.putString("orderId"+i, jsondata4.getString("orderId"+i));
-//                           b4.putString("nickname"+i, jsondata4.getString("nickname"+i));
+                          b4.putString("nickname"+i, jsondata4.getString("nickname"+i));
                             b4.putString("eatingTime"+i, jsondata4.getString("eatingTime"+i));
                             b4.putString("restaurant"+i, jsondata4.getString("restaurant"+i));
                        //     b4.putString("photo"+i, jsondata4.getString("photo"+i));

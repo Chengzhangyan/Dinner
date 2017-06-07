@@ -29,6 +29,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,11 +46,11 @@ import com.example.a1.dinnerlogin.releaseDate.orderId;
 public class readApply extends Activity {
 
     private TextView mEatingTime;
-    private TextView mCanteen;
+
     private TextView mContent;
     private TextView mResult;
-    private ImageView mHead;
-    private Button mApplyer;
+
+    private TextView mApplyer;
     private Button mOrder;
 
     private Button mBack;
@@ -96,10 +97,10 @@ public class readApply extends Activity {
 
 
         mResult = (TextView) findViewById(R.id.status);
-        mApplyer = (Button) findViewById(R.id.applyer);
-        mHead = (ImageView) findViewById(R.id.applyer_head);
+        mApplyer = (TextView) findViewById(R.id.applyer);
+
         mEatingTime = (TextView) findViewById(R.id.time);
-        mCanteen = (TextView) findViewById(R.id.canteen);
+
         mContent = (TextView) findViewById(R.id.content);
         mOrder = (Button) findViewById(R.id.orderinfo);
 
@@ -138,7 +139,7 @@ public class readApply extends Activity {
     private void inputData(String nickname, String eatingTime, String canteen, String content, String result) {
         // mNickName.setText(nickName);String nickName,
         mEatingTime.setText(eatingTime);
-        mCanteen.setText(canteen);
+
         mApplyer.setText(nickname);
         mResult.setText(result);
         mContent.setText(content);
@@ -164,7 +165,7 @@ public class readApply extends Activity {
 
             List<NameValuePair> formparams = new ArrayList<NameValuePair>();
             // formparams.add(new BasicNameValuePair("result", result));//审批结果
-            formparams.add(new BasicNameValuePair("userId", applyMsg.applyer.getUserid()));//申请人id
+            formparams.add(new BasicNameValuePair("userId", checkMsg.applyer.getUserid()));//申请人id
             formparams.add(new BasicNameValuePair("orderId", orderId));//饭约号
             UrlEncodedFormEntity uefEntity;
 
