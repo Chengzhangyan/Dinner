@@ -51,7 +51,7 @@ public class loginTest extends ActivityInstrumentationTestCase2 {
         solo.clickOnButton("登录");
 
         /*检查是否成功跳转*/
-        solo.assertCurrentActivity("登陆跳转失败","userInfoEdit");
+        solo.assertCurrentActivity("登陆跳转失败","menu");
 
 
 

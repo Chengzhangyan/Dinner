@@ -53,7 +53,7 @@ public class registerTest extends ActivityInstrumentationTestCase2 {
         solo.clickOnButton("确认");
 
         /*检查是否成功跳转*/
-        solo.assertCurrentActivity("注册跳转失败","login");
+        solo.assertCurrentActivity("注册跳转失败","menu");
 
         /*
         solo.waitForDialogToOpen();
